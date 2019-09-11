@@ -1,12 +1,12 @@
 package utilities;
 
-import org.monte.media.Format;
 import org.monte.media.Registry;
 import org.monte.screenrecorder.ScreenRecorder;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.Format;
 import java.text.SimpleDateFormat;
 
 public class SpecializedScreenRecorder extends ScreenRecorder {

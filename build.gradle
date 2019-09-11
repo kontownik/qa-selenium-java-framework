@@ -1,14 +1,25 @@
+buildscript {
+    repositories {
+        mavenLocal()
+        maven {
+            url = 'http://repo.maven.apache.org/maven2'
+        }
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.8.1"
+    }
+}
+
 plugins {
     id 'java'
+    id "io.qameta.allure" version "2.5"
 }
 
 repositories {
-    mavenLocal()
-    maven {
-        url = 'http://repo.maven.apache.org/maven2'
-    }
-    gradlePluginPortal()
+    mavenCentral()
 }
+
 
 dependencies {
     compile group: 'io.rest-assured', name: 'rest-assured', version: '4.1.1'
@@ -16,7 +27,7 @@ dependencies {
     compile group: 'io.rest-assured', name: 'json-schema-validator', version: '4.1.1'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.9.9'
     compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.9'
-
+    compile group: 'io.qameta.allure', name: 'allure-testng', version: '2.12.0'
 
     compile 'org.zaproxy:zap-clientapi:1.6.0'
     compile 'org.apache.logging.log4j:log4j-api:2.11.0'
@@ -69,6 +80,8 @@ test {
 
         if (!project.hasProperty(suitesProperty) || project.findProperty(suitesProperty) == "gui") {
             suites 'src/test/resources/suites/gui-suite.xml'
+        } else if (!project.hasProperty(suitesProperty) || project.findProperty(suitesProperty) == "api") {
+            suites 'src/test/resources/suites/api-suite.xml'
         } else {
             suites 'src/test/resources/suites/gui-suite.xml'
         }
@@ -78,4 +91,13 @@ test {
         events "PASSED", "FAILED", "SKIPPED"
     }
     reports.html.enabled = false    // turn off Gradle's HTML report
+}
+
+allure {
+    autoconfigure = true
+    version = '2.8.1'
+    clean = true
+    useTestNG {
+        version = '2.8.1'
+    }
 }
