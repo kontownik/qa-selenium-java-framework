@@ -2,6 +2,7 @@ package base.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import io.qameta.allure.Allure;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.config.FailureConfig;
 import io.restassured.config.HeaderConfig;
@@ -23,12 +24,12 @@ public class RequestBuilder {
                     String rqBody = req.getBody() != null ? req.getBody().toString() : " ";
                     String rsBody = rs.getBody().asString().equals("") ? " " : rs.getBody().prettyPrint();
 
-//                    Allure.addAttachment(String.format("Request Body - %s", endpoint), rqBody);
-//                    Allure.addAttachment(String.format("Request Headers - %s", endpoint), req.getHeaders().toString());
-//                    Allure.addAttachment(String.format("Request URI - %s", endpoint), req.getURI());
-//                    Allure.addAttachment(String.format("Response Body - %s", endpoint), rsBody);
-//                    Allure.addAttachment(String.format("Response Status Code - %s", endpoint),
-//                            Integer.toString(rs.getStatusCode()));
+                    Allure.addAttachment(String.format("Request Body - %s", endpoint), rqBody);
+                    Allure.addAttachment(String.format("Request Headers - %s", endpoint), req.getHeaders().toString());
+                    Allure.addAttachment(String.format("Request URI - %s", endpoint), req.getURI());
+                    Allure.addAttachment(String.format("Response Body - %s", endpoint), rsBody);
+                    Allure.addAttachment(String.format("Response Status Code - %s", endpoint),
+                            Integer.toString(rs.getStatusCode()));
 
                     return rs;
                 });

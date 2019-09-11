@@ -1,5 +1,6 @@
 package tests.api;
 
+
 import base.BaseApi;
 import base.api.Paths;
 import io.restassured.module.jsv.JsonSchemaValidator;
@@ -8,6 +9,7 @@ import models.responseModels.template.TemplateRs;
 import org.hamcrest.Matchers;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 
 import static io.restassured.RestAssured.given;
 
