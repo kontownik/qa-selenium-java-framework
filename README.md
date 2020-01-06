@@ -17,13 +17,15 @@ Kudos for all the [contributors of the original repository](https://github.com/n
 
 If you don't want to install Gradle on your local machine, you can use gradle wrapper to run tests and execute others commands. 
 To do it:
-1. open terminal
-2. go to project folder (`pwd command should displayed qa-selenium-java-framework as current folder`)
-3. use 
-`./gradlew` instead `gradle`, eg. to compile project and run all tests:
+1. Open terminal
+2. Go to project folder (`pwd command should displayed qa-selenium-java-framework as current folder`)
+3. Use Gradle wrapper to compile project and run all tests:
 ```bash
 ./gradlew clean
 ```
+or to run specific suite type `gradlew test -PrunSuites=api`
+### Allure Report
+To generate Allure Report type `gradlew allureReport` or `gradlew allureServe` to start webserver and preview report in the browser.
 
 ## To run OWASP Zap Daemon
 ```docker run -u zap -p 8899:8899 -i owasp/zap2docker-stable zap.sh -daemon -host 0.0.0.0 -port 8899 -config api.key=SECRETKEY -config api.addrs.addr.name=.* -config api.addrs.addr.regex=true```

@@ -1,11 +1,10 @@
-package tests;
+package tests.gui;
 
-
-import base.BaseTest;
+import base.BaseGui;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PlaceholderTest extends BaseTest {
+public class PlaceholderTest extends BaseGui {
 
     @Test
     public void placeholderTest() {

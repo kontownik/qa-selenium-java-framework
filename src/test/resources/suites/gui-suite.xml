@@ -3,7 +3,7 @@
 <suite name="GUI tests" parallel="classes" thread-count="2">
     <test name="Placeholder tests">
         <packages>
-            <package name="tests"></package>
+            <package name="tests.gui"></package>
         </packages>
     </test>
 </suite>
