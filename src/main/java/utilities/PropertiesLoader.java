@@ -49,11 +49,15 @@ public class PropertiesLoader {
         return properties;
     }
 
+    public String getProperty(String name) {
+        return properties.getProperty(name);
+    }
+
     public String getBaseUrl() {
         return properties.getProperty("BASE_URL");
     }
 
-    public String getBaseApiUrl(){
+    public String getBaseApiUrl() {
         return properties.getProperty("BASE_API_URL");
     }
 

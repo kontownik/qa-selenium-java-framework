@@ -43,7 +43,7 @@ public class DriverManager {
 //                options.addArguments("--headless");   //TODO: pass arguments in a better way
                 DCChrome.setCapability(ChromeOptions.CAPABILITY, options);
                 // Setup Proxy
-                if (propertiesLoader.getZAPAddress() != null) {
+                if (propertiesLoader.getZAPAddress() != null && propertiesLoader.getZAPPort() != null) {
                     setupProxy(DCChrome);
                 }
                 driver = new ChromeDriver(DCChrome);
@@ -102,6 +102,12 @@ public class DriverManager {
         int seconds = propertiesLoader.getImplicitWait();
         driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
         log.debug(String.format("Setting implicit wait to %d seconds", seconds));
+    }
+
+    public void close() {
+        if (driver != null) {
+            driver.close();
+        }
     }
 
     public void quit() {

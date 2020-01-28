@@ -18,16 +18,9 @@ import java.time.format.DateTimeFormatter;
 
 public class ZAPManager {
     private static final Logger log = LogManager.getLogger(ZAPManager.class.getName());
-    private PropertiesLoader propertiesLoader = new PropertiesLoader();
     private ClientApi clientApi;
 
-    public ZAPManager() {
-        String zapAddress = propertiesLoader.getZAPAddress();
-        String zapPort = propertiesLoader.getZAPPort();
-        String zapApiKey = propertiesLoader.getZAPApiKey();
-        if (zapAddress == null | zapPort == null | zapApiKey == null) {
-            return;
-        }
+    public ZAPManager(String zapAddress, String zapPort, String zapApiKey) {
         this.clientApi = new ClientApi(zapAddress,
                 Integer.parseInt(zapPort), zapApiKey);
         log.info("Proxy client API created");
